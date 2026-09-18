@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BussMetrics | National Portal for Business Economics</title>
+<meta name="description" content="BussMetrics is the single-window portal for business economics: economic indicators, sector dashboards, support schemes, open data and research publications.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- SVG sprite: line icons only, no emoji anywhere -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16.5 16.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 20h18M5 20v-6M10 20V9M15 20v-8M20 20V4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 2h9l4 4v16H6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 11h7M9 15h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="3" width="8" height="8" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3" y="13" width="8" height="8" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="13" width="8" height="8" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h7v16H4zM13 4h7v16h-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M6 8h3M15 8h3" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a12 12 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" fill="none" stroke="currentColor" stroke-width="2"/><path d="m3 7 9 6 9-6" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c3 3.5 3 14 0 18-3-4-3-14.5 0-18z" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-a11y" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2" fill="currentColor"/><path d="M4 9h16M12 9v6M12 15l-3 6M12 15l3 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-contrast" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a5 5 0 0 0-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9a1 1 0 0 1 1-1z" fill="currentColor"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M4 4l7.2 9.3L4.4 20h2.6l5.4-5.3L17 20h3l-7.5-9.7L18.9 4h-2.6l-4.8 4.8L8 4z" fill="currentColor"/></symbol>
+  <symbol id="i-yt" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9.5v5l5-2.5z" fill="currentColor"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10v7M8 7v.5M12 17v-4a2.5 2.5 0 0 1 5 0v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+</svg>
+
+<!-- ============ 1. TOP NAVIGATION BAR ============ -->
+<div class="utility-bar">
+  <div class="container utility-inner">
+    <p class="utility-note">A single window on business economics: indicators, policy and markets</p>
+    <div class="utility-right">
+      <span class="utility-tel"><svg class="ic sm"><use href="#i-phone"/></svg> Helpline 1800-11-6622</span>
+      <span class="utility-mail"><svg class="ic sm"><use href="#i-mail"/></svg> desk@bussmetrics.example</span>
+      <div class="social-strip" aria-label="Social media">
+        <a href="#" aria-label="Facebook"><svg class="ic sm"><use href="#i-fb"/></svg></a>
+        <a href="#" aria-label="X"><svg class="ic sm"><use href="#i-x"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg class="ic sm"><use href="#i-yt"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg class="ic sm"><use href="#i-in"/></svg></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <nav class="mainnav" id="mainnav" aria-label="Primary">
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span><span class="sr-only">Menu</span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#schemes">Schemes</a></li>
+        <li><a href="#news">Data &amp; News</a></li>
+        <li><a href="#directories">Directories</a></li>
+        <li><a href="#explore">Explore</a></li>
+        <li><a href="#participate">Participate</a></li>
+      </ul>
+    </nav>
+    <form class="topbar-search" role="search" data-search-form>
+      <input type="search" name="q" placeholder="Search BussMetrics" aria-label="Search BussMetrics" data-search-input>
+      <button type="submit" class="btn btn-red btn-sm">Search</button>
+    </form>
+    <div class="topbar-tools">
+      <label class="lang-select">
+        <span class="sr-only">Language</span>
+        <svg class="ic sm"><use href="#i-globe"/></svg>
+        <select id="langSelect" aria-label="Select language">
+          <option value="en">English</option>
+          <option value="hi">Hindi</option>
+          <option value="ta">Tamil</option>
+          <option value="bn">Bengali</option>
+        </select>
+      </label>
+      <div class="a11y-tools" role="group" aria-label="Accessibility tools">
+        <button type="button" data-font="down" title="Decrease text size" aria-label="Decrease text size">A-</button>
+        <button type="button" data-font="reset" title="Normal text size" aria-label="Normal text size">A</button>
+        <button type="button" data-font="up" title="Increase text size" aria-label="Increase text size">A+</button>
+        <button type="button" id="contrastBtn" title="High contrast" aria-label="Toggle high contrast" aria-pressed="false"><svg class="ic sm"><use href="#i-contrast"/></svg></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 2. HERO BANNER ============ -->
+<section class="hero" id="home">
+  <div class="hero-bg" role="img" aria-label="Photograph of a financial district with high-rise office towers"></div>
+  <div class="container hero-inner">
+    <div class="hero-brand">
+      <img src="assets/logo.svg" alt="" class="hero-logo" width="64" height="64">
+      <h1>BussMetrics</h1>
+      <p class="hero-tag">The National Portal for Business Economics</p>
+      <p class="hero-sub">Indicators, schemes, open data and research for enterprises, students and policymakers &mdash; in one place.</p>
+    </div>
+
+    <form class="hero-search" role="search" data-search-form id="heroSearch">
+      <label class="sr-only" for="heroCat">Search category</label>
+      <select id="heroCat" data-search-scope>
+        <option value="all">All categories</option>
+        <option value="schemes">Schemes</option>
+        <option value="data">Data series</option>
+        <option value="publications">Publications</option>
+        <option value="directory">Directory</option>
+        <option value="news">News</option>
+      </select>
+      <label class="sr-only" for="heroQ">Search terms</label>
+      <input id="heroQ" type="search" placeholder="Search indicators, schemes, reports, directories" data-search-input autocomplete="off">
+      <button class="btn btn-red" type="submit"><svg class="ic sm"><use href="#i-search"/></svg> Search</button>
+      <div class="search-results" id="searchResults" hidden></div>
+    </form>
+
+    <div class="trending" aria-label="Trending searches">
+      <span class="trending-label">Trending</span>
+      <button type="button" class="pill" data-trend="GDP growth rate">GDP growth rate</button>
+      <button type="button" class="pill" data-trend="Inflation index">Inflation index</button>
+      <button type="button" class="pill" data-trend="MSME credit">MSME credit</button>
+      <button type="button" class="pill" data-trend="Export data">Export data</button>
+      <button type="button" class="pill" data-trend="Startup funding">Startup funding</button>
+      <button type="button" class="pill" data-trend="Employment survey">Employment survey</button>
+    </div>
+
+    <figure class="hero-quote">
+      <img src="assets/img/leader-portrait.jpg" alt="Portrait of Dr. A. Raman, Chief Economist, BussMetrics Council" width="112" height="112">
+      <blockquote>
+        <p>&ldquo;Sound decisions begin with sound measurement. BussMetrics puts the country&rsquo;s business economics in every citizen&rsquo;s hands.&rdquo;</p>
+        <cite>Dr. A. Raman, Chief Economist, BussMetrics Council</cite>
+      </blockquote>
+    </figure>
+  </div>
+</section>
+
+<main id="main">
+<!-- ============ 3. STATISTICS STRIP ============ -->
+<section class="stats" aria-label="Portal statistics">
+  <div class="container stats-grid">
+    <div class="stat"><span class="stat-ring"><svg class="ic"><use href="#i-chart"/></svg></span><strong class="stat-num" data-count="1248">0</strong><span class="stat-label">Economic Indicators</span></div>
+    <div class="stat"><span class="stat-ring"><svg class="ic"><use href="#i-doc"/></svg></span><strong class="stat-num" data-count="386">0</strong><span class="stat-label">Support Schemes</span></div>
+    <div class="stat"><span class="stat-ring"><svg class="ic"><use href="#i-grid"/></svg></span><strong class="stat-num" data-count="92">0</strong><span class="stat-label">Sector Dashboards</span></div>
+    <div class="stat"><span class="stat-ring"><svg class="ic"><use href="#i-db"/></svg></span><strong class="stat-num" data-count="15640">0</strong><span class="stat-label">Open Data Series</span></div>
+    <div class="stat"><span class="stat-ring"><svg class="ic"><use href="#i-book"/></svg></span><strong class="stat-num" data-count="470">0</strong><span class="stat-label">Research Publications</span></div>
+    <div class="stat"><span class="stat-ring"><svg class="ic"><use href="#i-pin"/></svg></span><strong class="stat-num" data-count="28">0</strong><span class="stat-label">State Economy Profiles</span></div>
+  </div>
+</section>
+
+<!-- ============ 4. ONLINE SERVICES ============ -->
+<section class="services section" id="services">
+  <div class="container services-grid">
+    <div class="services-panel">
+      <h2 class="panel-title">Online Services</h2>
+      <p class="panel-sub">Apply, track and analyse &mdash; every service is digital by default.</p>
+      <div class="service-cards">
+        <a class="service-card" href="#categories">
+          <img src="assets/img/svc-analytics.jpg" alt="Analyst reviewing a business analytics dashboard on a laptop" loading="lazy">
+          <span class="service-body"><strong>Market Analytics Desk</strong><small>Live dashboards for prices, demand and sector output.</small></span>
+          <svg class="ic arrow"><use href="#i-arrow"/></svg>
+        </a>
+        <a class="service-card" href="#directories">
+          <img src="assets/img/svc-registration.jpg" alt="Desk with calculator, documents and spectacles for compliance work" loading="lazy">
+          <span class="service-body"><strong>Registration &amp; Compliance</strong><small>Single-window filings, licences and annual returns.</small></span>
+          <svg class="ic arrow"><use href="#i-arrow"/></svg>
+        </a>
+        <a class="service-card" href="#schemes">
+          <img src="assets/img/svc-funding.jpg" alt="Customer at a bank customer-care counter" loading="lazy">
+          <span class="service-body"><strong>Credit &amp; Funding Access</strong><small>Compare institutional credit lines, guarantees and grants.</small></span>
+          <svg class="ic arrow"><use href="#i-arrow"/></svg>
+        </a>
+        <a class="service-card" href="#explore">
+          <img src="assets/img/svc-trade.jpg" alt="Port crane lifting a shipping container" loading="lazy">
+          <span class="service-body"><strong>Trade &amp; Export Intelligence</strong><small>Tariffs, shipping flows and export-market data.</small></span>
+          <svg class="ic arrow"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="services-side">
+      <article class="side-card">
+        <img src="assets/img/interact-authority.jpg" alt="Professionals in discussion during a consultation meeting" loading="lazy">
+        <div class="side-body">
+          <h3>Interact with the Authority</h3>
+          <p>Book consultations with economists and regulators, or submit feedback on draft policy papers.</p>
+          <a class="btn btn-red btn-sm" href="#participate">Book a Consultation</a>
+        </div>
+      </article>
+      <article class="side-card">
+        <img src="assets/img/careers.jpg" alt="Interview panel meeting a candidate in a modern office" loading="lazy">
+        <div class="side-body">
+          <h3>Careers &amp; Internships</h3>
+          <p>Fellowships, research internships and analyst vacancies across partner institutes.</p>
+          <a class="btn btn-outline btn-sm" href="#directories">View Open Roles</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. INFORMATION CATEGORIES ============ -->
+<section class="categories section" id="categories">
+  <div class="container">
+    <header class="section-head">
+      <h2>Information Categories</h2>
+      <p>Six lenses on the economy &mdash; from national accounts to firm-level supply chains.</p>
+    </header>
+    <div class="cat-grid">
+      <a class="cat-card" href="#explore"><img src="assets/img/cat-macro.jpg" alt="Financial district skyline at golden hour" loading="lazy"><div><h3>Macroeconomy &amp; Growth</h3><p>GDP, investment, prices and business-cycle trackers.</p></div></a>
+      <a class="cat-card" href="#news"><img src="assets/img/cat-markets.jpg" alt="Traders working on a stock exchange floor" loading="lazy"><div><h3>Banking &amp; Financial Markets</h3><p>Liquidity, credit flow, market depth and investor trends.</p></div></a>
+      <a class="cat-card" href="#schemes"><img src="assets/img/cat-msme.jpg" alt="Small business owner at a market stall" loading="lazy"><div><h3>MSME &amp; Startups</h3><p>Registration, credit, incubation and growth-stage support.</p></div></a>
+      <a class="cat-card" href="#participate"><img src="assets/img/cat-labour.jpg" alt="Trainees at a vocational skilling workshop" loading="lazy"><div><h3>Employment &amp; Labour</h3><p>Workforce surveys, wage indices and skilling pipelines.</p></div></a>
+      <a class="cat-card" href="#news"><img src="assets/img/cat-fiscal.jpg" alt="Indian banknotes with a stack of coins" loading="lazy"><div><h3>Public Finance &amp; Taxation</h3><p>Budgets, tax policy, subsidies and fiscal indicators.</p></div></a>
+      <a class="cat-card" href="#explore"><img src="assets/img/cat-trade.jpg" alt="Workers moving goods in a logistics warehouse" loading="lazy"><div><h3>Trade &amp; Supply Chains</h3><p>Exports, imports, logistics cost and value-chain maps.</p></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. SPOTLIGHT / CAMPAIGN BANNER ============ -->
+<section class="campaign" aria-label="Flagship campaign">
+  <div class="container campaign-inner">
+    <div class="campaign-copy">
+      <span class="kicker">Flagship Campaign</span>
+      <h2>BussMetrics Economic Outlook 2026</h2>
+      <p>A nationwide survey of 4,800 firms across 28 states &mdash; measuring capacity utilisation, pricing power and investment intent. The full outlook is open for public consultation this quarter.</p>
+      <div class="campaign-cta">
+        <a class="btn btn-red" href="#news">Read the Outlook</a>
+        <a class="btn btn-ghost" href="#directories">Download Summary</a>
+      </div>
+    </div>
+    <div class="campaign-photo">
+      <img src="assets/img/spotlight-banner.jpg" alt="Portrait of a woman entrepreneur standing in her coffee shop" loading="lazy">
+      <figcaption>4,800 firms surveyed across 28 states</figcaption>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. GOVERNMENT SCHEMES ============ -->
+<section class="schemes section" id="schemes">
+  <div class="container">
+    <header class="section-head light">
+      <h2>Business Support Schemes</h2>
+      <p>Search 386 active schemes by name, sector or benefit &mdash; then check whether you qualify.</p>
+    </header>
+    <form class="scheme-search" id="schemeSearch" role="search">
+      <input type="search" id="schemeQ" placeholder="Search schemes: credit, export, green, skilling" aria-label="Search schemes">
+      <button class="btn btn-red" type="submit"><svg class="ic sm"><use href="#i-search"/></svg> Search Schemes</button>
+      <button class="btn btn-ghost" type="button" id="eligibilityBtn">Check Your Eligibility</button>
+    </form>
+    <div class="scheme-grid" id="schemeGrid"></div>
+  </div>
+</section>
+
+<!-- ============ 8. NEWS + SPOTLIGHT ============ -->
+<section class="news section" id="news">
+  <div class="container news-grid">
+    <div class="news-panel">
+      <div class="news-head">
+        <h2>News &amp; Press Releases</h2>
+        <div class="tabs" role="tablist" aria-label="News filters">
+          <button class="tab active" role="tab" aria-selected="true" data-tab="all">All</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="press">Press Releases</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="news">News</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="announce">Announcements</button>
+        </div>
+      </div>
+      <ul class="news-list" id="newsList"></ul>
+      <a class="more-link" href="#directories">View archive <svg class="ic sm"><use href="#i-arrow"/></svg></a>
+    </div>
+    <aside class="spotlight-col" aria-label="Spotlight">
+      <h2>Spotlight</h2>
+      <a class="spot-card" href="#participate">
+        <img src="assets/img/spotlight-1.jpg" alt="Cheerful small business owner in an apron at a farmers market" loading="lazy">
+        <div><strong>MSME Utsav 2026</strong><small>40,000 enterprises onboarded in twelve weeks</small></div>
+      </a>
+      <a class="spot-card" href="#explore">
+        <img src="assets/img/spotlight-2.jpg" alt="Aerial view of a solar panel field with wind turbines" loading="lazy">
+        <div><strong>Green Economy Mission</strong><small>Solar capacity additions up 34 percent year-on-year</small></div>
+      </a>
+      <a class="spot-card" href="#participate">
+        <img src="assets/img/spotlight-3.jpg" alt="Delegate listening during a business conference presentation" loading="lazy">
+        <div><strong>National Business Summit</strong><small>Registrations open for the November edition</small></div>
+      </a>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 9. DIRECTORIES ============ -->
+<section class="directories section" id="directories">
+  <div class="container">
+    <header class="section-head">
+      <h2>BussMetrics Directories</h2>
+      <p>People, offices, publications, data and events &mdash; the institutional address book.</p>
+    </header>
+    <div class="dir-grid">
+      <a class="dir-card" href="#participate"><img src="assets/img/dir-whoswho.jpg" alt="Portrait of a business professional in formal attire" loading="lazy"><strong>Who&rsquo;s Who</strong><small>Economists, board members and institute leadership.</small></a>
+      <a class="dir-card" href="#participate"><img src="assets/img/dir-contact.jpg" alt="Call-centre agent wearing a headset at night" loading="lazy"><strong>Contact Directory</strong><small>Helplines, regional offices and nodal officers.</small></a>
+      <a class="dir-card" href="#news"><img src="assets/img/dir-publications.jpg" alt="Reading room with books on shelves" loading="lazy"><strong>Publications Library</strong><small>Reports, working papers and statistical handbooks.</small></a>
+      <a class="dir-card" href="#explore"><img src="assets/img/dir-data.jpg" alt="Laptop displaying a statistics dashboard" loading="lazy"><strong>Open Data Catalogue</strong><small>Downloadable series, APIs and metadata.</small></a>
+      <a class="dir-card" href="#participate"><img src="assets/img/dir-events.jpg" alt="Podium in front of a trade exhibition hall" loading="lazy"><strong>Events &amp; Tenders</strong><small>Conferences, consultations and procurement notices.</small></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. EXPLORE ============ -->
+<section class="explore section" id="explore">
+  <div class="container explore-grid">
+    <div class="explore-left">
+      <header class="section-head left">
+        <h2>Explore Business Economics</h2>
+        <p>Field photography from the four engines of the national economy.</p>
+      </header>
+      <div class="carousel" id="carousel">
+        <div class="carousel-track">
+          <figure class="slide active"><img src="assets/img/explore-1.jpg" alt="High-rise towers of a financial district"><figcaption>Financial districts and corporate hubs</figcaption></figure>
+          <figure class="slide"><img src="assets/img/explore-2.jpg" alt="Worker operating machinery in a manufacturing plant"><figcaption>Manufacturing and industrial corridors</figcaption></figure>
+          <figure class="slide"><img src="assets/img/explore-3.jpg" alt="Gantry cranes beside stacked cargo containers at a port"><figcaption>Ports, logistics and trade gates</figcaption></figure>
+          <figure class="slide"><img src="assets/img/explore-4.jpg" alt="Farmers harvesting a green field"><figcaption>Agrarian economy and rural markets</figcaption></figure>
+        </div>
+        <button class="car-btn prev" id="carPrev" aria-label="Previous slide"><svg class="ic"><use href="#i-left"/></svg></button>
+        <button class="car-btn next" id="carNext" aria-label="Next slide"><svg class="ic"><use href="#i-right"/></svg></button>
+        <div class="car-dots" id="carDots" role="tablist" aria-label="Slides"></div>
+      </div>
+    </div>
+    <div class="explore-right">
+      <a class="purple-card" href="#categories"><img src="assets/img/purple-sectors.jpg" alt="Factory workers operating heavy machinery" loading="lazy"><div><strong>Sectors &amp; Industry</strong><small>Output, capacity and price metrics for 92 sectors.</small></div></a>
+      <a class="purple-card" href="#directories"><img src="assets/img/purple-regions.jpg" alt="Aerial view of a dense Indian city skyline" loading="lazy"><div><strong>States &amp; Regions</strong><small>Comparative state economy profiles and rankings.</small></div></a>
+      <a class="purple-card" href="#categories"><img src="assets/img/purple-global.jpg" alt="Yellow gantry cranes above cargo at a container port" loading="lazy"><div><strong>Global Trade</strong><small>Bilateral flows, tariffs and competitiveness indices.</small></div></a>
+      <a class="purple-card" href="#news"><img src="assets/img/purple-digital.jpg" alt="Payment terminal displaying a QR code for digital payment" loading="lazy"><div><strong>Digital Economy</strong><small>Payments, platforms and data-driven services.</small></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11. PARTICIPATE ============ -->
+<section class="participate section" id="participate">
+  <div class="container">
+    <header class="section-head">
+      <h2>BussConnect &mdash; Participate</h2>
+      <p>Policy is better when it is written with the people it measures. Join in three ways.</p>
+    </header>
+    <div class="part-grid">
+      <article class="part-card">
+        <img src="assets/img/part-discuss.jpg" alt="Professionals reviewing documents together at a table" loading="lazy">
+        <div class="part-body">
+          <span class="part-tag">Discuss</span>
+          <h3>Policy Consultation Forum</h3>
+          <p>Debate draft MSME credit norms and price-index methodology with practising economists.</p>
+          <a href="#news" class="more-link">Join the forum <svg class="ic sm"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+      <article class="part-card">
+        <img src="assets/img/part-do.jpg" alt="Instructor training a group of vocational students" loading="lazy">
+        <div class="part-body">
+          <span class="part-tag">Do</span>
+          <h3>Field Survey Volunteers</h3>
+          <p>Join the 2026 firm-level economic census drive as an enumerator in your district.</p>
+          <a href="#directories" class="more-link">Register as volunteer <svg class="ic sm"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+      <article class="part-card">
+        <img src="assets/img/part-innovate.jpg" alt="Young entrepreneurs working on laptops at a coworking space" loading="lazy">
+        <div class="part-body">
+          <span class="part-tag">Innovate</span>
+          <h3>Open Data Challenge</h3>
+          <p>Build new indicators from the BussMetrics open API and win a research fellowship.</p>
+          <a href="#directories" class="more-link">See the brief <svg class="ic sm"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ 12. FOOTER ============ -->
+<footer class="footer">
+  <div class="container partners" aria-label="Partner organisations">
+    <span class="partner"><i>SO</i> Statistical Office</span>
+    <span class="partner"><i>TC</i> Trade Commission</span>
+    <span class="partner"><i>MC</i> MSME Council</span>
+    <span class="partner"><i>SB</i> National Skill Board</span>
+    <span class="partner"><i>FI</i> Fiscal Institute</span>
+    <span class="partner"><i>MR</i> Market Regulator</span>
+  </div>
+  <div class="container footer-grid">
+    <nav aria-label="About BussMetrics">
+      <h3>About BussMetrics</h3>
+      <ul>
+        <li><a href="#home">Overview</a></li>
+        <li><a href="#directories">Governance</a></li>
+        <li><a href="#news">Annual Reports</a></li>
+        <li><a href="#participate">Citizen Charter</a></li>
+        <li><a href="#directories">Disclosure &amp; RTI</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Resources">
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="#explore">Open Data Catalogue</a></li>
+        <li><a href="#directories">Publications</a></li>
+        <li><a href="#news">Statistical Calendar</a></li>
+        <li><a href="#categories">Methodologies</a></li>
+        <li><a href="#explore">Developer APIs</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Services">
+      <h3>Services</h3>
+      <ul>
+        <li><a href="#schemes">Scheme Finder</a></li>
+        <li><a href="#schemes">Eligibility Check</a></li>
+        <li><a href="#participate">Consultations</a></li>
+        <li><a href="#services">Careers</a></li>
+        <li><a href="#directories">Helpdesk</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Connect">
+      <h3>Connect</h3>
+      <ul>
+        <li><a href="#directories">Contact Directory</a></li>
+        <li><a href="#directories">Regional Offices</a></li>
+        <li><a href="#news">Media &amp; Press</a></li>
+        <li><a href="#participate">Feedback</a></li>
+        <li><a href="#participate">Grievances</a></li>
+      </ul>
+    </nav>
+    <div class="footer-app">
+      <h3>BussMetrics Anywhere</h3>
+      <div class="qr-row">
+        <img src="assets/img/footer-qr.png" alt="QR code linking to the BussMetrics mobile application" width="104" height="104">
+        <p>Scan for the mobile app: indicators, scheme alerts and data releases on your phone.</p>
+      </div>
+      <div class="social-strip footer-social" aria-label="Social media">
+        <a href="#" aria-label="Facebook"><svg class="ic sm"><use href="#i-fb"/></svg></a>
+        <a href="#" aria-label="X"><svg class="ic sm"><use href="#i-x"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg class="ic sm"><use href="#i-yt"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg class="ic sm"><use href="#i-in"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-base">
+    <div class="container footer-base-inner">
+      <p>BussMetrics is an educational demonstration portal on business economics. Photography is illustrative stock imagery; no endorsement is implied. Not affiliated with any government body.</p>
+      <p class="footer-meta">Content reviewed by the BussMetrics Editorial Desk &middot; Last updated: 18 September 2026 &middot; <span id="year"></span></p>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top"><svg class="ic"><use href="#i-up"/></svg></button>
+
+<!-- Eligibility modal -->
+<div class="modal" id="eligModal" role="dialog" aria-modal="true" aria-labelledby="eligTitle" hidden>
+  <div class="modal-card">
+    <button class="modal-close" id="eligClose" aria-label="Close"><svg class="ic"><use href="#i-close"/></svg></button>
+    <h3 id="eligTitle">Check Your Eligibility</h3>
+    <p class="modal-sub">Answer four questions and we will shortlist matching schemes.</p>
+    <form id="eligForm">
+      <label>Enterprise type
+        <select id="eligType" required>
+          <option value="">Select</option>
+          <option value="msme">Micro / Small enterprise</option>
+          <option value="medium">Medium enterprise</option>
+          <option value="startup">Registered startup</option>
+          <option value="exporter">Export-oriented unit</option>
+        </select>
+      </label>
+      <label>Sector
+        <select id="eligSector" required>
+          <option value="">Select</option>
+          <option value="manufacturing">Manufacturing</option>
+          <option value="services">Services</option>
+          <option value="agriculture">Agriculture &amp; food</option>
+          <option value="digital">Digital &amp; platforms</option>
+        </select>
+      </label>
+      <label>Employees
+        <select id="eligSize" required>
+          <option value="">Select</option>
+          <option value="s">Fewer than 50</option>
+          <option value="m">50 to 250</option>
+          <option value="l">More than 250</option>
+        </select>
+      </label>
+      <label>State
+        <select id="eligState" required>
+          <option value="">Select</option>
+          <option>Maharashtra</option><option>Karnataka</option><option>Tamil Nadu</option>
+          <option>Gujarat</option><option>Uttar Pradesh</option><option>West Bengal</option>
+        </select>
+      </label>
+      <button class="btn btn-red" type="submit">Find Matching Schemes</button>
+    </form>
+    <div class="modal-result" id="eligResult" hidden></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
